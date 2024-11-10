@@ -7,7 +7,6 @@ import {LogOutButton} from "@/app/components/auth-buttons";
 
 export default async function AdminPage() {
     const session = await getServerSession(authOptions)
-    console.log(session);
 
     if (!session || !session.user.roles?.includes("be-admin")) {
         redirect('/');
