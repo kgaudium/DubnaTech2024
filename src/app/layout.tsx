@@ -7,6 +7,10 @@ export default function Layout({ children }: { children: ReactNode }) {
 
     return (
         <html className="h-full">
+        <head>
+            <link rel="manifest" href="/manifest_old.json"/>
+            <title>2o3x231 - DubnaTech2024</title>
+        </head>
         <body className="h-full">
         <div className="h-full bg-background w-full">
             <NavBar/>
