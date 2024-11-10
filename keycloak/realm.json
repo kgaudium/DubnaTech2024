@@ -7,8 +7,8 @@
   "refreshTokenMaxReuse" : 0,
   "accessTokenLifespan" : 60,
   "accessTokenLifespanForImplicitFlow" : 900,
-  "ssoSessionIdleTimeout" : 2,
-  "ssoSessionMaxLifespan" : 2,
+  "ssoSessionIdleTimeout" : 10,
+  "ssoSessionMaxLifespan" : 7,
   "ssoSessionIdleTimeoutRememberMe" : 0,
   "ssoSessionMaxLifespanRememberMe" : 0,
   "offlineSessionIdleTimeout" : 2592000,
@@ -427,6 +427,28 @@
     "realmRoles" : [ "default-roles-hackaton" ],
     "notBefore" : 0,
     "groups" : [ "/secret-admin" ]
+  }, {
+    "id" : "45ca2674-6c12-45b1-a697-eed77e32495b",
+    "username" : "bogdya2004@gmail.com",
+    "firstName" : "Богдан",
+    "lastName" : "Анатольеыич",
+    "email" : "bogdya2004@gmail.com",
+    "emailVerified" : true,
+    "createdTimestamp" : 1731253203297,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "de8453bb-99e2-4608-be3a-de3830ac6ece",
+      "type" : "password",
+      "createdDate" : 1731253203455,
+      "secretData" : "{\"value\":\"/PgcPbJ6lpSJowyx7XMptNUQxIoFIGc5OYZKqGwibYU=\",\"salt\":\"U7sh9JwEW5581+zZHXGMFQ==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":5,\"algorithm\":\"argon2\",\"additionalParameters\":{\"hashLength\":[\"32\"],\"memory\":[\"7168\"],\"type\":[\"id\"],\"version\":[\"1.3\"],\"parallelism\":[\"1\"]}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-hackaton" ],
+    "notBefore" : 0,
+    "groups" : [ ]
   }, {
     "id" : "6c4a554a-91b6-4677-a16f-20ba67ddad09",
     "username" : "user",
