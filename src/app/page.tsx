@@ -1,28 +1,5 @@
 import {getServerSession} from 'next-auth'
-import {authOptions} from './api/auth/[...nextauth]/route'
-import {LogOutButton} from "@/app/components/auth-buttons";
-
-
-async function Home() {
-    const session = await getServerSession(authOptions)
-
-    return (
-        <div className="flex flex-col justify-center items-center gap-4">
-            <h1>Welcome, {session ? session.user?.name : "Guest"}!</h1>
-            {
-                session ? (
-                    <div className="flex justify-center gap-4">
-                        <LogOutButton/>
-                    </div>
-                ) : (
-                    <div className="flex gap-4">
-
-                    </div>
-                )
-            }
-        </div>
-    )
-}
+import {authOptions} from './api/auth/[...nextauth]/authOptions'
 
 export default async function Home1() {
     const session = await getServerSession(authOptions)
