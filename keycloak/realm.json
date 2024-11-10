@@ -7,8 +7,8 @@
   "refreshTokenMaxReuse" : 0,
   "accessTokenLifespan" : 60,
   "accessTokenLifespanForImplicitFlow" : 900,
-  "ssoSessionIdleTimeout" : 10,
-  "ssoSessionMaxLifespan" : 10,
+  "ssoSessionIdleTimeout" : 2,
+  "ssoSessionMaxLifespan" : 2,
   "ssoSessionIdleTimeoutRememberMe" : 0,
   "ssoSessionMaxLifespanRememberMe" : 0,
   "offlineSessionIdleTimeout" : 2592000,
@@ -73,6 +73,14 @@
           "account" : [ "manage-account", "view-profile" ]
         }
       },
+      "clientRole" : false,
+      "containerId" : "73730761-8d60-4578-bc4a-14a3e22f7d12",
+      "attributes" : { }
+    }, {
+      "id" : "e9b72d68-ba50-4e95-adfc-26988b819d30",
+      "name" : "secret-admin",
+      "description" : "",
+      "composite" : false,
       "clientRole" : false,
       "containerId" : "73730761-8d60-4578-bc4a-14a3e22f7d12",
       "attributes" : { }
@@ -248,15 +256,7 @@
       } ],
       "security-admin-console" : [ ],
       "admin-cli" : [ ],
-      "nextjs-app" : [ {
-        "id" : "b212ce79-1744-4ced-a901-b05705fce85a",
-        "name" : "secret-admin",
-        "description" : "",
-        "composite" : false,
-        "clientRole" : true,
-        "containerId" : "00c1e8bf-c028-495e-aa2d-068b3326fc4f",
-        "attributes" : { }
-      } ],
+      "nextjs-app" : [ ],
       "account-console" : [ ],
       "broker" : [ {
         "id" : "0444d40b-83c0-4bb1-8bc6-0745bbd918cb",
@@ -292,6 +292,14 @@
         "id" : "d540aa12-78e9-4541-be5c-c312adfa76f5",
         "name" : "view-applications",
         "description" : "${role_view-applications}",
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "8d74d2ac-4bca-4642-937d-8f4f5f6a9ff6",
+        "attributes" : { }
+      }, {
+        "id" : "3344f25c-cb27-4161-bd2e-ade56b3293c4",
+        "name" : "be-admin",
+        "description" : "",
         "composite" : false,
         "clientRole" : true,
         "containerId" : "8d74d2ac-4bca-4642-937d-8f4f5f6a9ff6",
@@ -354,8 +362,7 @@
     },
     "realmRoles" : [ ],
     "clientRoles" : {
-      "nextjs-app" : [ "secret-admin" ],
-      "account" : [ "manage-account", "delete-account" ]
+      "account" : [ "manage-account", "be-admin", "delete-account" ]
     }
   } ],
   "defaultRole" : {
