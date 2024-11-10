@@ -9,7 +9,7 @@ export default function AdminPage() {
                 <Link href="/account">
                     <Button variant="outline">Go to Personal Account</Button>
                 </Link>
-                <Button className={" bg-black white"}>Logout</Button>
+                <Button className={"bg-black white"}>Logout</Button>
             </div>
         </div>
     )
