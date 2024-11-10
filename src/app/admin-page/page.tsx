@@ -10,6 +10,7 @@ export default async function AdminPage() {
     if (!session || !session.user.groups?.includes("delete-account")) {
         redirect('/account');
     }
+    console.log(session);
 
     return (
         <div className="max-w-2xl mx-auto space-y-8">
