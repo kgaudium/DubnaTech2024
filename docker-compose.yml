@@ -3,14 +3,14 @@ services:
     build: .
     restart: unless-stopped
     environment:
-      NEXTAUTH_URL: "http://193.201.90.36:3000"
+      NEXTAUTH_URL: "http://${HOSTNAME}:3000"
       NEXTAUTH_SECRET: ${SECRET}
       NEXT_PUBLIC_SECRET: ${SECRET}
       KEYCLOAK_CLIENT_ID: "nextjs-app"
       KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_CLIENT_SECRET}
       NODE_ENV: "production"
       KEYCLOAK_ISSUER: "http://auth:8080/realms/Hackaton"
-      NEXT_PUBLIC_KEYCLOAK_URL: "http://193.201.90.36:8080"
+      NEXT_PUBLIC_KEYCLOAK_URL: "http://${HOSTNAME}:8080"
       NEXT_PUBLIC_KEYCLOAK_REALM: "Hackaton"
     links:
       - auth
@@ -33,7 +33,7 @@ services:
       KC_REALM_NAME: ${KC_REALM_NAME}
       KC_BOOTSTRAP_ADMIN_USERNAME: ${KEYCLOAK_ADMIN}
       KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
-      KC_HOSTNAME: "193.201.90.36"
+      KC_HOSTNAME: ${HOSTNAME}
       KC_HOSTNAME_PORT: "8080"
       KC_PROXY: "edge"
     ports:
