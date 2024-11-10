@@ -1,6 +1,48 @@
-version: '3'
 services:
   web:
     build: .
+    restart: unless-stopped
+    environment:
+      NEXTAUTH_URL: "http://193.201.90.36:3000"
+      NEXTAUTH_SECRET: ${SECRET}
+      NEXT_PUBLIC_SECRET: ${SECRET}
+      KEYCLOAK_CLIENT_ID: "nextjs-app"
+      KEYCLOAK_CLIENT_SECRET: ${KEYCLOAK_CLIENT_SECRET}
+      NODE_ENV: "production"
+      KEYCLOAK_ISSUER: "http://auth:8080/realms/Hackaton"
+      NEXT_PUBLIC_KEYCLOAK_URL: "http://193.201.90.36:8080"
+      NEXT_PUBLIC_KEYCLOAK_REALM: "Hackaton"
+    links:
+      - auth
     ports:
-      - "3000:3000"
+      - ${WEB_PORT}:3000
+    networks:
+      - app-network
+
+  auth:
+    image: keycloak/keycloak:${KC_VERSION}
+    command: [
+      "start-dev",
+      "--import-realm",
+      "--hostname-strict=false",
+    ]
+    restart: unless-stopped
+    environment:
+      KC_HTTP_ENABLED: "true"
+      KC_HTTP_RELATIVE_PATH: "/"
+      KC_REALM_NAME: ${KC_REALM_NAME}
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KEYCLOAK_ADMIN}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      KC_HOSTNAME: "193.201.90.36"
+      KC_HOSTNAME_PORT: "8080"
+      KC_PROXY: "edge"
+    ports:
+      - ${KC_PORT}:8080
+    volumes:
+      - ./keycloak/realm.json:/opt/keycloak/data/import/realm.json:ro
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
