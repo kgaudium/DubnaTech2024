@@ -1,7 +1,7 @@
 {
   "id" : "73730761-8d60-4578-bc4a-14a3e22f7d12",
   "realm" : "Hackaton",
-  "notBefore" : 0,
+  "notBefore" : 1731253140,
   "defaultSignatureAlgorithm" : "RS256",
   "revokeRefreshToken" : false,
   "refreshTokenMaxReuse" : 0,
@@ -78,8 +78,7 @@
       "attributes" : { }
     } ],
     "client" : {
-      "realm-management" : [
-        {
+      "realm-management" : [ {
         "id" : "6a352816-2beb-4794-a3d1-ace282c6a7c3",
         "name" : "manage-events",
         "description" : "${role_manage-events}",
@@ -413,6 +412,28 @@
     "notBefore" : 0,
     "groups" : [ "/secret-admin" ]
   }, {
+    "id" : "45ca2674-6c12-45b1-a697-eed77e32495b",
+    "username" : "bogdya2004@gmail.com",
+    "firstName" : "Богдан",
+    "lastName" : "Анатольеыич",
+    "email" : "bogdya2004@gmail.com",
+    "emailVerified" : true,
+    "createdTimestamp" : 1731253203297,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "de8453bb-99e2-4608-be3a-de3830ac6ece",
+      "type" : "password",
+      "createdDate" : 1731253203455,
+      "secretData" : "{\"value\":\"/PgcPbJ6lpSJowyx7XMptNUQxIoFIGc5OYZKqGwibYU=\",\"salt\":\"U7sh9JwEW5581+zZHXGMFQ==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":5,\"algorithm\":\"argon2\",\"additionalParameters\":{\"hashLength\":[\"32\"],\"memory\":[\"7168\"],\"type\":[\"id\"],\"version\":[\"1.3\"],\"parallelism\":[\"1\"]}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-hackaton" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
     "id" : "6c4a554a-91b6-4677-a16f-20ba67ddad09",
     "username" : "user",
     "firstName" : "Богдан",
@@ -450,23 +471,14 @@
     "id" : "8d74d2ac-4bca-4642-937d-8f4f5f6a9ff6",
     "clientId" : "account",
     "name" : "${client_account}",
-    "rootUrl" : "http://193.201.90.36:3000",
-    "baseUrl" : "http://193.201.90.36:3000",
+    "rootUrl" : "${authBaseUrl}",
+    "baseUrl" : "/realms/Hackaton/account/",
     "surrogateAuthRequired" : false,
     "enabled" : true,
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
-    "redirectUris" : [
-      "http://193.201.90.36:3000/*",
-      "http://193.201.90.36:3000/api/auth/callback/*",
-      "http://193.201.90.36:3000/api/auth/callback/keycloak",
-      "http://193.201.90.36:3000/api/auth/signin/*",
-      "http://193.201.90.36:3000/api/auth/signin"
-    ],
-    "webOrigins" : [
-      "http://193.201.90.36:3000",
-      "+"
-    ],
+    "redirectUris" : [ "/realms/Hackaton/account/*" ],
+    "webOrigins" : [ ],
     "notBefore" : 0,
     "bearerOnly" : false,
     "consentRequired" : false,
@@ -596,8 +608,8 @@
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
     "secret" : "zsB0ou47MLJifWz6rZoH8kk07molsclI",
-    "redirectUris" : [ "http://193.201.90.36:3000/api/auth/callback/keycloak" ],
-    "webOrigins" : [ "http://193.201.90.36:3000" ],
+    "redirectUris" : [ "http://localhost:3000/api/auth/callback/keycloak" ],
+    "webOrigins" : [ "http://localhost:3000" ],
     "notBefore" : 0,
     "bearerOnly" : false,
     "consentRequired" : false,
@@ -613,9 +625,11 @@
       "oidc.ciba.grant.enabled" : "false",
       "client.secret.creation.time" : "1731187604",
       "backchannel.logout.session.required" : "true",
+      "login_theme" : "keycloak.v2",
       "post.logout.redirect.uris" : "http://localhost:3000",
       "oauth2.device.authorization.grant.enabled" : "false",
       "display.on.consent.screen" : "false",
+      "use.jwks.url" : "false",
       "backchannel.logout.revoke.offline.tokens" : "false"
     },
     "authenticationFlowBindingOverrides" : { },
@@ -1279,7 +1293,20 @@
     "xXSSProtection" : "1; mode=block",
     "strictTransportSecurity" : "max-age=31536000; includeSubDomains"
   },
-  "smtpServer" : { },
+  "smtpServer" : {
+    "password" : "txwo crdk hyhu znpp",
+    "replyToDisplayName" : "Админ Админыч",
+    "starttls" : "true",
+    "auth" : "true",
+    "port" : "587",
+    "replyTo" : "",
+    "host" : "smtp.gmail.com",
+    "from" : "BOGDYA2004@gmail.com",
+    "fromDisplayName" : "Админов Админ Админович",
+    "envelopeFrom" : "",
+    "ssl" : "false",
+    "user" : "BOGDYA2004@gmail.com"
+  },
   "eventsEnabled" : false,
   "eventsListeners" : [ "jboss-logging" ],
   "enabledEventTypes" : [ ],
@@ -1970,7 +1997,7 @@
     "name" : "Verify Email",
     "providerId" : "VERIFY_EMAIL",
     "enabled" : true,
-    "defaultAction" : false,
+    "defaultAction" : true,
     "priority" : 50,
     "config" : { }
   }, {
