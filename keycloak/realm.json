@@ -1,7 +1,7 @@
 {
   "id" : "73730761-8d60-4578-bc4a-14a3e22f7d12",
   "realm" : "Hackaton",
-  "notBefore" : 0,
+  "notBefore" : 1731253140,
   "defaultSignatureAlgorithm" : "RS256",
   "revokeRefreshToken" : false,
   "refreshTokenMaxReuse" : 0,
@@ -78,8 +78,7 @@
       "attributes" : { }
     } ],
     "client" : {
-      "realm-management" : [
-        {
+      "realm-management" : [ {
         "id" : "6a352816-2beb-4794-a3d1-ace282c6a7c3",
         "name" : "manage-events",
         "description" : "${role_manage-events}",
@@ -613,9 +612,11 @@
       "oidc.ciba.grant.enabled" : "false",
       "client.secret.creation.time" : "1731187604",
       "backchannel.logout.session.required" : "true",
+      "login_theme" : "keycloak.v2",
       "post.logout.redirect.uris" : "http://localhost:3000",
       "oauth2.device.authorization.grant.enabled" : "false",
       "display.on.consent.screen" : "false",
+      "use.jwks.url" : "false",
       "backchannel.logout.revoke.offline.tokens" : "false"
     },
     "authenticationFlowBindingOverrides" : { },
@@ -1279,7 +1280,20 @@
     "xXSSProtection" : "1; mode=block",
     "strictTransportSecurity" : "max-age=31536000; includeSubDomains"
   },
-  "smtpServer" : { },
+  "smtpServer" : {
+    "password" : "txwo crdk hyhu znpp",
+    "replyToDisplayName" : "Админ Админыч",
+    "starttls" : "true",
+    "auth" : "true",
+    "port" : "587",
+    "replyTo" : "",
+    "host" : "smtp.gmail.com",
+    "from" : "BOGDYA2004@gmail.com",
+    "fromDisplayName" : "Админов Админ Админович",
+    "envelopeFrom" : "",
+    "ssl" : "false",
+    "user" : "BOGDYA2004@gmail.com"
+  },
   "eventsEnabled" : false,
   "eventsListeners" : [ "jboss-logging" ],
   "enabledEventTypes" : [ ],
@@ -1970,7 +1984,7 @@
     "name" : "Verify Email",
     "providerId" : "VERIFY_EMAIL",
     "enabled" : true,
-    "defaultAction" : false,
+    "defaultAction" : true,
     "priority" : 50,
     "config" : { }
   }, {
