@@ -7,6 +7,6 @@ export function LogOutButton(){
         <Button
             className="bg-black text-white w-full"
             onClick={() => {signOut()}}
-        >LogOut</Button>
+        >Log Out</Button>
     )
 }

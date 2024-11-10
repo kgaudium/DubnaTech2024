@@ -28,11 +28,11 @@ export default async function Home1() {
     const session = await getServerSession(authOptions)
 
     return (
-        <div className="min-h-screen min-w-full flex items-center justify-center bg-gray-100">
-            <div className="bg-white p-8 rounded-lg shadow-md">
+
+            <div className="bg-white p-8 rounded-lg shadow-md m-auto">
                 <h1 className="text-3xl font-bold mb-4">Welcome, {session ? session.user?.name : "Guest"}!</h1>
                 <p className="mb-4">This page is accessible to everyone.</p>
             </div>
-        </div>
+
     );
 }
