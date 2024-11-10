@@ -18,15 +18,15 @@ export const authOptions: AuthOptions = {
                 // Assuming the groups are returned in the access token's payload
                 const payload = JSON.parse(Buffer.from(account.access_token!.split('.')[1], 'base64').toString())
 
-                console.log(payload);
+                console.log(payload.resource_access.account);
 
-                token.groups = payload.resource_access.account.roles || []
+                token.roles = payload.resource_access.account.roles || []
             }
             return token
         },
         async session({ session, token }) {
             session.accessToken = token.accessToken
-            session.user.groups = token.groups
+            session.user.roles = token.roles
             //console.log(session)
 
             return session
