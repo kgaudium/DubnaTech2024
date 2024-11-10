@@ -1,29 +1,20 @@
-import {ReactNode} from "react"
-import Link from "next/link"
-import {Button} from "@/components/ui/button"
-import './globals.css';
+'use client'
 
-export default function Layout({children}: { children: ReactNode }) {
+import {ReactNode} from "react"
+
+import './globals.css';
+import {useAuth} from "@/app/hooks/use-auth";
+import NavBar from "@/app/components/navbar";
+
+export default function Layout({ children }: { children: ReactNode }) {
+    const { authenticated, login, logout, register } = useAuth()
+
     return (
         <html>
         <body>
-        <div className="min-h-screen bg-background">
-            <header className="border-b">
-                <nav className="container flex items-center justify-between h-16">
-                    <Link href="/" className="font-semibold text-lg">
-                        Auth App
-                    </Link>
-                    <div className="flex gap-4">
-                        <Link href="/login">
-                            <Button variant="ghost">Login</Button>
-                        </Link>
-                        <Link href="/register">
-                            <Button>Register</Button>
-                        </Link>
-                    </div>
-                </nav>
-            </header>
-            <main className="container py-6">{children}</main>
+        <div className="min-h-screen bg-background w-full">
+            <NavBar/>
+            <main className="">{children}</main>
         </div>
         </body>
         </html>
