@@ -8,10 +8,9 @@ import {LogOutButton} from "@/app/components/auth-buttons";
 export default async function AdminPage() {
     const session = await getServerSession(authOptions)
 
-    if (!session || !session.user.groups?.includes("delete-account")) {
+    if (!session || !session.user.roles?.includes("be-admin")) {
         redirect('/');
     }
-    //console.log(session);
 
     return (
         <div className=" mx-auto space-y-8 bg-white p-10 rounded-lg shadow-md m-auto">
