@@ -1,9 +1,12 @@
+
 import {ReactNode} from "react"
 
 import './globals.css';
 import NavBar from "@/app/components/navbar";
 
 export default function Layout({ children }: { children: ReactNode }) {
+
+
 
     return (
         <html className="h-full">

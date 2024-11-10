@@ -7,6 +7,10 @@ import {getServerSession} from "next-auth";
 export default async function NavBar() {
     const session = await getServerSession()
 
+
+    //Костыль для удобного логаута и смены аккаунта, в деплое не нужно
+
+
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-background">
             <div className="flex h-16 items-center justify-between px-4">

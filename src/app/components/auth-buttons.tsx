@@ -2,11 +2,15 @@
 import {signIn, signOut} from 'next-auth/react';
 import {Button} from "@/components/ui/button";
 
+
 export function LogOutButton(){
+    const handleLogOut = async () => {
+        signOut();
+    }
     return (
         <Button
             className="bg-black text-white w-full"
-            onClick={() => {signOut()}}
+            onClick={handleLogOut}
         >Log Out</Button>
     )
 }
