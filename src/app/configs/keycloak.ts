@@ -6,6 +6,6 @@ const keycloakConfig = {
     clientId: "nextjs-app"
 };
 
-const keycloak = typeof window !== 'undefined' ? new Keycloak(keycloakConfig) : null;
+const keycloak = new Keycloak(keycloakConfig);
 
 export default keycloak;

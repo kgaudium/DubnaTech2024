@@ -1,15 +1,24 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {session} from "next-auth/core/routes";
+import {getServerSession} from "next-auth";
+import {redirect} from "next/navigation";
+import {LogOutButton} from "@/app/components/auth-buttons";
 
-export default function AccountPage() {
+export default async function AccountPage() {
+    const session = await getServerSession();
+
+    if (!session) {
+        redirect('api/auth/signin');
+    }
+
     const user = {
-        name: "John",
-        surname: "Doe",
-        email: "john@example.com",
+        name: session.user?.name,
+        email: session.user?.email,
     }
 
     return (
-        <div className="max-w-md mx-auto">
+        <div className="max-w-md mx-auto mt-10 ">
             <Card>
                 <CardHeader>
                     <CardTitle>Personal Account</CardTitle>
@@ -20,16 +29,10 @@ export default function AccountPage() {
                         <p className="font-medium">{user.name}</p>
                     </div>
                     <div className="space-y-2">
-                        <p className="text-sm text-muted-foreground">Surname</p>
-                        <p className="font-medium">{user.surname}</p>
-                    </div>
-                    <div className="space-y-2">
                         <p className="text-sm text-muted-foreground">Email</p>
                         <p className="font-medium">{user.email}</p>
                     </div>
-                    <Button className="w-full bg-black white">
-                        Logout
-                    </Button>
+                    <LogOutButton />
                 </CardContent>
             </Card>
         </div>
