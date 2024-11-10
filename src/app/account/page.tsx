@@ -13,8 +13,8 @@ export default async function AccountPage() {
 
     console.log(session.user.name);
     const user = {
-        first_name: session.user?.name.split(' ')[0],
-        second_name: session.user?.name.split(' ')[1],
+        first_name: session.user?.name?.split(' ')[0],
+        second_name: session.user?.name?.split(' ')[1],
         email: session.user?.email,
     }
 
