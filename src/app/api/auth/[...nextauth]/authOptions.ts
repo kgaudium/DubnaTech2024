@@ -1,15 +1,7 @@
-import { AuthOptions } from "next-auth";
+import { AuthOptions }  from "next-auth";
 import KeycloakProvider from "next-auth/providers/keycloak";
 
-// export const authOptions: AuthOptions = {
-//     providers: [
-//         KeycloakProvider({
-//             clientId: process.env.KEYCLOAK_CLIENT_ID!,
-//             clientSecret: process.env.KEYCLOAK_CLIENT_SECRET!,
-//             issuer: process.env.KEYCLOAK_ISSUER!
-//         })
-//     ]
-// };
+
 export const authOptions: AuthOptions = {
     providers: [
         KeycloakProvider({
@@ -17,6 +9,7 @@ export const authOptions: AuthOptions = {
             clientSecret: process.env.KEYCLOAK_CLIENT_SECRET!,
             issuer: process.env.KEYCLOAK_ISSUER,
         }),
+
     ],
     callbacks: {
         async jwt({ token, account }) {
@@ -24,6 +17,8 @@ export const authOptions: AuthOptions = {
                 token.accessToken = account.access_token
                 // Assuming the groups are returned in the access token's payload
                 const payload = JSON.parse(Buffer.from(account.access_token!.split('.')[1], 'base64').toString())
+
+                console.log(payload);
 
                 token.groups = payload.resource_access.account.roles || []
             }
@@ -33,10 +28,22 @@ export const authOptions: AuthOptions = {
             session.accessToken = token.accessToken
             session.user.groups = token.groups
             //console.log(session)
+
             return session
         },
         async redirect({ url, baseUrl }) {
             return url.startsWith(baseUrl) ? url : baseUrl;
         },
+        // async redirect({ url, baseUrl }) {
+        //     // Allows relative callback URLs
+        //     if (url.startsWith("/")) return `${baseUrl}${url}`
+        //     // Allows callback URLs on the same origin
+        //     else if (new URL(url).origin === baseUrl) return url
+        //     return baseUrl
+        // }
+
     },
+    // pages: {
+    //     signIn: '/sign-in/user-data', // Custom sign-in page
+    // },
 }

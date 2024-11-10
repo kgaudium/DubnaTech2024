@@ -8,10 +8,9 @@ export default async function AccountPage() {
     const session = await getServerSession();
 
     if (!session) {
-        redirect('api/auth/signin');
+        redirect('/');
     }
 
-    console.log(session.user.name);
     const user = {
         first_name: session.user?.name?.split(' ')[0],
         second_name: session.user?.name?.split(' ')[1],
