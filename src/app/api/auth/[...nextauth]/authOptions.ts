@@ -35,5 +35,8 @@ export const authOptions: AuthOptions = {
             //console.log(session)
             return session
         },
+        async redirect({ url, baseUrl }) {
+            return url.startsWith(baseUrl) ? url : baseUrl;
+        },
     },
 }
