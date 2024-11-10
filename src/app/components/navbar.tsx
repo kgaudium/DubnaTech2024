@@ -2,7 +2,6 @@ import Link from "next/link"
 import { UserCircle } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import {redirect} from "next/navigation";
 
 export default function NavBar() {
     return (
