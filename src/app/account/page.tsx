@@ -11,8 +11,10 @@ export default async function AccountPage() {
         redirect('api/auth/signin');
     }
 
+    console.log(session.user.name);
     const user = {
-        name: session.user?.name,
+        first_name: session.user?.name.split(' ')[0],
+        second_name: session.user?.name.split(' ')[1],
         email: session.user?.email,
     }
 
@@ -24,14 +26,18 @@ export default async function AccountPage() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="space-y-2">
-                        <p className="text-md text-muted-foreground">Name</p>
-                        <p className="font-medium">{user.name}</p>
+                        <p className="text-md text-muted-foreground">First Name</p>
+                        <p className="font-medium">{user.first_name}</p>
+                    </div>
+                    <div className="space-y-2">
+                        <p className="text-md text-muted-foreground">Last Name</p>
+                        <p className="font-medium">{user.second_name}</p>
                     </div>
                     <div className="space-y-2">
                         <p className="text-md text-muted-foreground">Email</p>
                         <p className="font-medium">{user.email}</p>
                     </div>
-                    <LogOutButton />
+                    <LogOutButton/>
                 </CardContent>
             </Card>
         </div>
